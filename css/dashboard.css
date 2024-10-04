@@ -1,0 +1,171 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    color: white;
+}
+
+h1.fashion_taital {
+    margin: 0;
+    font-size: 24px;
+}
+
+/* Menu de navegação lateral */
+nav {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #333;
+    padding-top: 20px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-around;
+    overflow-y: auto;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-around;
+}
+
+nav ul li {
+    margin: 20px 0;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #575757;
+}
+
+ion-icon {
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.material-symbols-outlined {
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+/* Tema - troca de ícones */
+.tema {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.tema ion-icon {
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+/* Estilo da logo */
+.logo img {
+    width: 150px;
+    margin: 0 auto;
+    display: block;
+    padding: 10px 0;
+}
+
+/* Estilo da sidebar (botão de logout) */
+.sidebar {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+.sidebar a {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    transition: background-color 0.3s;
+}
+
+.sidebar a:hover {
+    background-color: #575757;
+}
+
+.sidebar p {
+    margin-left: 10px;
+}
+
+/* Ajuste de conteúdo para evitar sobreposição com o menu lateral */
+#sales-stats, #product-distribution {
+    margin-left: 260px;
+    padding: 20px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    nav {
+        width: 200px;
+    }
+
+    #sales-stats, #product-distribution {
+        margin-left: 210px;
+    }
+}
+
+.logo{
+    width: 24px;
+}
+
+/* */
+
+body.dark-mode {
+    background-color: #1e1e1e;
+    color: #ccc;
+}
+
+body.dark-mode nav {
+    background-color: #333;
+    color: white;
+}
+
+body.dark-mode h1.fashion_taital, body.dark-mode h2.shirt_text {
+    color: white;
+}
+
+body.dark-mode a {
+    color: #ccc;
+}
+
+body.dark-mode .sidebar a:hover {
+    background-color: #444;
+}
+
+body.dark-mode ion-icon {
+    color: white;
+}
+
+/* Ajusta o ícone de tema */
+.tema ion-icon {
+    cursor: pointer;
+    font-size: 24px;
+    margin: 0 10px;
+}
+
+/* Oculta o ícone do sol inicialmente (modo claro por padrão) */
+.tema ion-icon[name="sunny"] {
+    display: none;
+}

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <!-- basic -->
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <!-- mobile metas -->
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+   <!-- site metas -->
+   <title>ConstruMac</title>
+   <meta name="keywords" content="">
+   <meta name="description" content="">
+   <meta name="author" content="">
+   <!-- bootstrap css -->
+   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+   <!-- style css -->
+   <link rel="stylesheet" type="text/css" href="css/style.css">
+   <!-- Responsive-->
+   <link rel="stylesheet" href="css/responsive.css">
+   <!-- fevicon -->
+   <link rel="icon" href="images/fevicon.png" type="image/gif" />
+   <!-- Scrollbar Custom CSS -->
+   <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+   <!-- Tweaks for older IEs-->
+   <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+   <!-- fonts -->
+   <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+   <!-- font awesome -->
+   <link rel="stylesheet" type="text/css"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+   <!--  -->
+   <!-- owl stylesheets -->
+   <link href="https://fonts.googleapis.com/css?family=Great+Vibes|Poppins:400,700&display=swap&subset=latin-ext"
+      rel="stylesheet">
+   <link rel="stylesheet" href="css/owl.carousel.min.css">
+   <link rel="stylesheet" href="css/owl.theme.default.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css"
+      media="screen">
+   <style>
+      .error {
+         color: red;
+         display: none;
+         font-size: 0.875em;
+         margin-top: 0.5em;
+      }
+   </style>
+</head>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <!-- meta e estilo (não alterado) -->
+</head>
+
+
+<body>
+   <!-- banner bg main start -->
+   <div class="banner_bg_main">
+      <div class="container">
+         <div class="header_section_top">
+            <div class="row">
+               <div class="col-sm-12">
+                  <div class="custom_menu">
+                     <ul class="custom_menu__lista">
+                        <li class="custom_menu__lista__item"><a href="index.html">Home</a></li>
+                        <li class="custom_menu__lista__item"><a href="#">Contatos</a></li>
+                        <li class="custom_menu__lista__item"><a href="#"><img src="images/carrinho-de-compras.png"
+                                 alt="">Carrinho</a></li>
+                        <li class="custom_menu__lista__item"><a href="login.html"><img src="images/login.png" alt="">
+                              entrar ou
+                              cadastrar</a></li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <div class="fashion_section">
+         <main>
+            <form id="loginForm">
+               <h1>Login</h1>
+               <fieldset>
+                  <div class="form-group">
+                     <label for="email">Email</label>
+                     <div class="col-sm-10">
+                        <input type="email" id="email" class="form-control" placeholder="Enter email">
+                        <span id="emailError" class="error">E-mail inválido</span>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <label for="password">Senha</label>
+                     <div class="col-sm-10">
+                        <input type="password" id="password" class="form-control" placeholder="Senha">
+                        <span id="passwordError" class="error">Senha é obrigatória</span>
+                     </div>
+                  </div>
+                  <button type="submit" class="btn btn-form">Entrar</button>
+                  <span id="generalError" class="error">Erro geral</span> <!-- Adicionado para erros gerais -->
+               </fieldset>
+            </form>
+
+            <button onclick="signInWithGoogle()">Entrar com Google</button>
+            <span id="googleError" class="error">Erro ao logar com Google</span> <!-- Adicionado para erros do Google -->
+         </main>
+
+         <!-- Rodapé e outros (não alterado) -->
+      </div>
+   </div>
+
+   <!-- Scripts -->
+   <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app-compat.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-auth-compat.js"></script>
+   <script>
+      // Inicialização do Firebase
+      const firebaseConfig = {
+         apiKey: "AIzaSyCixcj0lNX3WxPtGODlgZk1E7tAJSezH7M",
+         authDomain: "ecomerce-rafa-tech.firebaseapp.com",
+         projectId: "ecomerce-rafa-tech",
+         storageBucket: "ecomerce-rafa-tech.appspot.com",
+         messagingSenderId: "963792279091",
+         appId: "1:963792279091:web:eec78ab7246cf035d9f546"
+      };
+
+      firebase.initializeApp(firebaseConfig);
+
+      // Função de login com e-mail e senha
+      document.getElementById('loginForm').addEventListener('submit', function (event) {
+         event.preventDefault(); // Impede o envio do formulário para fazer o login manualmente
+
+         var email = document.getElementById('email').value;
+         var password = document.getElementById('password').value;
+         var emailError = document.getElementById('emailError');
+         var passwordError = document.getElementById('passwordError');
+         var generalError = document.getElementById('generalError');
+
+         // Limpar mensagens de erro
+         emailError.style.display = 'none';
+         passwordError.style.display = 'none';
+         generalError.style.display = 'none';
+
+         var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+         if (!email || !emailPattern.test(email)) {
+            emailError.style.display = 'block';
+            return;
+         }
+
+         if (!password) {
+            passwordError.style.display = 'block';
+            return;
+         }
+
+         // Tentar login no Firebase com e-mail e senha
+         firebase.auth().signInWithEmailAndPassword(email, password)
+            .then((userCredential) => {
+               // Sucesso no login
+               const user = userCredential.user;
+               console.log('Usuário logado:', user);
+               // Redirecionar para página desejada após login
+               window.location.href = 'dashboard.html';
+            })
+            .catch((error) => {
+               // Exibir erro
+               console.error('Erro de autenticação:', error.message);
+               generalError.innerHTML = 'Erro ao tentar login: ' + error.message;
+               generalError.style.display = 'block';
+            });
+      });
+
+      // Função de autenticação com Google
+      const provider = new firebase.auth.GoogleAuthProvider();
+
+      function signInWithGoogle() {
+         var googleError = document.getElementById('googleError');
+         googleError.style.display = 'none'; // Limpar mensagem de erro
+
+         firebase.auth().signInWithPopup(provider)
+            .then((result) => {
+               const user = result.user;
+               console.log('Usuário logado com Google:', user);
+               window.location.href = 'dashboard.html'; // Redirecionar após login
+            })
+            .catch((error) => {
+               console.error('Erro ao fazer login com Google:', error.message);
+               googleError.innerHTML = 'Erro ao logar com Google: ' + error.message;
+               googleError.style.display = 'block';
+            });
+      }
+   </script>
+
+</body>
+
+</html>

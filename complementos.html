@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complementos para Produtos</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Complementos para Produtos</h1>
+    </header>
+
+    <section>
+        <h2>Cadastrar Produto</h2>
+        <form id="productForm">
+            <label for="name">Nome do Produto:</label>
+            <input type="text" id="name" required>
+
+            <label for="price">Preço (R$):</label>
+            <input type="number" id="price" required>
+
+            <label for="quantity">Quantidade:</label>
+            <input type="number" id="quantity" required>
+
+            <button type="submit">Cadastrar</button>
+        </form>
+    </section>
+
+    <section>
+        <h2>Lista de Produtos</h2>
+        <table id="productTable">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Preço (R$)</th>
+                    <th>Quantidade</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Produtos serão adicionados aqui -->
+            </tbody>
+        </table>
+    </section>
+
+    <script>
+        let productList = [];
+
+        // Função para renderizar a tabela de produtos
+        function renderTable() {
+            const tableBody = document.querySelector('#productTable tbody');
+            tableBody.innerHTML = ''; // Limpa a tabela antes de renderizar
+
+            productList.forEach((product, index) => {
+                const row = document.createElement('tr');
+
+                row.innerHTML = `
+                    <td>${product.name}</td>
+                    <td>R$ ${product.price}</td>
+                    <td>${product.quantity}</td>
+                    <td>
+                        <button onclick="editProduct(${index})">Editar</button>
+                        <button onclick="deleteProduct(${index})">Excluir</button>
+                    </td>
+                `;
+
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Função para cadastrar um novo produto
+        document.getElementById('productForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const price = document.getElementById('price').value;
+            const quantity = document.getElementById('quantity').value;
+
+            const newProduct = { name, price, quantity };
+            productList.push(newProduct);
+
+            renderTable();
+            document.getElementById('productForm').reset(); // Limpa o formulário
+        });
+
+        // Função para editar um produto
+        function editProduct(index) {
+            const product = productList[index];
+
+            document.getElementById('name').value = product.name;
+            document.getElementById('price').value = product.price;
+            document.getElementById('quantity').value = product.quantity;
+
+            // Atualiza o produto na lista após a edição
+            document.getElementById('productForm').onsubmit = function (event) {
+                event.preventDefault();
+
+                productList[index] = {
+                    name: document.getElementById('name').value,
+                    price: document.getElementById('price').value,
+                    quantity: document.getElementById('quantity').value
+                };
+
+                renderTable();
+                document.getElementById('productForm').reset();
+                this.onsubmit = cadastrarProduto; // Volta a função normal
+            };
+        }
+
+        // Função para excluir um produto
+        function deleteProduct(index) {
+            productList.splice(index, 1); // Remove o produto da lista
+            renderTable();
+        }
+    </script>
+
+</body>
+</html>

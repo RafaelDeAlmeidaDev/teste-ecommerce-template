@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <!-- basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- site metas -->
+    <title>ConstruMac</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- bootstrap css -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <!-- style css -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <!-- Responsive -->
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- favicon -->
+    <link rel="icon" href="images/fevicon.png" type="image/gif" />
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+    <!-- Tweaks for older IEs -->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <!-- fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+    <!-- font awesome -->
+    <link rel="stylesheet" type="text/css"
+        href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- owl stylesheets -->
+    <link href="https://fonts.googleapis.com/css?family=Great+Vibes|Poppins:400,700&display=swap&subset=latin-ext"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css"
+        media="screen">
+</head>
+
+<body>
+    <!-- banner bg main start -->
+    <div class="banner_bg_main">
+        <!-- header top section start -->
+        <div class="container">
+            <div class="header_section_top">
+               <div class="row">
+                  <div class="col-sm-12">
+                     <div class="custom_menu">
+                        <ul class="custom_menu__lista">
+                           <li class="custom_menu__lista__item"><a href="index.html">Home</a></li>
+                           <li class="custom_menu__lista__item"><a href="#">Contatos</a></li>
+                           <li class="custom_menu__lista__item"><a href="#"><img src="images/carrinho-de-compras.png"
+                                    alt="">Carrinho</a></li>
+                           <li class="custom_menu__lista__item"><a href="login.html"><img src="images/login.png" alt=""> entrar ou
+                                 cadastrar</a></li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+        <div class="fashion_section">
+            <main>
+                <form id="registrationForm" action="" method="post">
+                    <h1>Cadastro</h1>
+                    <fieldset>
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" class="form-control" id="email" name="email" required placeholder="Digite seu e-mail">
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmEmail">Confirmar E-mail</label>
+                            <input type="email" class="form-control" id="confirmEmail" name="confirmEmail" required placeholder="Confirme seu e-mail">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Senha</label>
+                            <input type="password" class="form-control" id="password" name="password" required placeholder="Digite sua senha">
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirmar Senha</label>
+                            <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required placeholder="Confirme sua senha">
+                        </div>
+                        <div class="form-group">
+                            <label for="cpf">CPF</label>
+                            <input type="text" class="form-control" id="cpf" name="cpf" required placeholder="Digite seu CPF" maxlength="14">
+                        </div>
+                        <div class="form-group">
+                            <label for="dob">Data de Nascimento</label>
+                            <input type="date" class="form-control" id="dob" name="dob" required>
+                        </div>
+                        <div class="form-group form-check">
+                            <input type="checkbox" class="form-check-input" id="terms" name="terms" required>
+                            <label class="form-check-label" for="terms">Eu concordo com os <a href="#">termos de licença</a></label>
+                        </div>
+                        <button type="submit" class="btn btn-form">Cadastrar</button>
+                    </fieldset>
+                </form>
+            </main>
+        </div>
+
+        <div class="footer_section layout_padding">
+            <div class="container">
+                <div class="footer_logo"><a href="index.html"><img src="images/Construmac-logo-removebg-preview.png" alt="Construmac Logo"></a></div>
+                <div class="input_bt">
+                    <input type="text" class="mail_bt" placeholder="E-mail" name="E-mail">
+                </div>
+                <div class="location_main">Contato : <a href="#">55 17 123-456790</a></div>
+            </div>
+        </div>
+        <div class="copyright_section">
+            <div class="container">
+                <p class="copyright_text">© 2024 Rafael de Almeida</p>
+            </div>
+        </div>
+        <!-- Javascript files -->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/popper.min.js"></script>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="js/jquery-3.0.0.min.js"></script>
+        <script src="js/plugin.js"></script>
+        <!-- sidebar -->
+        <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+        <script src="js/custom.js"></script>
+        <!-- Form validation script -->
+        <script>
+            document.getElementById('registrationForm').addEventListener('submit', function(event) {
+                var email = document.getElementById('email').value;
+                var confirmEmail = document.getElementById('confirmEmail').value;
+                var password = document.getElementById('password').value;
+                var confirmPassword = document.getElementById('confirmPassword').value;
+                var cpf = document.getElementById('cpf').value;
+                var dob = document.getElementById('dob').value;
+
+                // Validate email confirmation
+                if (email !== confirmEmail) {
+                    alert('Os e-mails não coincidem.');
+                    event.preventDefault(); // Prevent form submission
+                    return;
+                }
+
+                // Validate password confirmation
+                if (password !== confirmPassword) {
+                    alert('As senhas não coincidem.');
+                    event.preventDefault(); // Prevent form submission
+                    return;
+                }
+
+                // Validate CPF
+                if (!validateCPF(cpf)) {
+                    alert('CPF inválido.');
+                    event.preventDefault(); // Prevent form submission
+                    return;
+                }
+
+                // Validate date of birth
+                if (!validateDateOfBirth(dob)) {
+                    alert('Data de nascimento inválida. A idade mínima deve ser 18 anos.');
+                    event.preventDefault(); // Prevent form submission
+                    return;
+                }
+            });
+
+            // CPF validation function
+            function validateCPF(cpf) {
+                cpf = cpf.replace(/\D/g, ''); // Remove non-numeric characters
+                if (cpf.length !== 11 || /^(\d)\1{10}$/.test(cpf)) {
+                    return false; // CPF is invalid
+                }
+                var sum = 0;
+                var remainder;
+                for (var i = 1; i <= 9; i++) {
+                    sum += parseInt(cpf.substring(i - 1, i)) * (11 - i);
+                }
+                remainder = (sum * 10) % 11;
+                remainder = (remainder === 10 || remainder === 11) ? 0 : remainder;
+                if (remainder !== parseInt(cpf.substring(9, 10))) {
+                    return false; // CPF is invalid
+                }
+                sum = 0;
+                for (var i = 1; i <= 10; i++) {
+                    sum += parseInt(cpf.substring(i - 1, i)) * (12 - i);
+                }
+                remainder = (sum * 10) % 11;
+                remainder = (remainder === 10 || remainder === 11) ? 0 : remainder;
+                if (remainder !== parseInt(cpf.substring(10, 11))) {
+                    return false; // CPF is invalid
+                }
+                return true; // CPF is valid
+            }
+
+            // Validate date of birth function
+            function validateDateOfBirth(dob) {
+                var birthDate = new Date(dob);
+                var today = new Date();
+                var age = today.getFullYear() - birthDate.getFullYear();
+                var month = today.getMonth() - birthDate.getMonth();
+                if (month < 0 || (month === 0 && today.getDate() < birthDate.getDate())) {
+                    age--;
+                }
+                return age >= 18; // Check if age is at least 18
+            }
+
+            // CPF Mask function
+            document.getElementById('cpf').addEventListener('input', function(e) {
+                var value = e.target.value.replace(/\D/g, '');
+                if (value.length > 3 && value.length <= 6) {
+                    value = value.replace(/(\d{3})(\d+)/, '$1.$2');
+                } else if (value.length > 6) {
+                    value = value.replace(/(\d{3})(\d{3})(\d+)/, '$1.$2.$3');
+                }
+                if (value.length > 9) {
+                    value = value.replace(/(\d{3})(\d{3})(\d{3})(\d+)/, '$1.$2.$3-$4');
+                }
+                e.target.value = value;
+            });
+        </script>
+</body>
+
+</html>
