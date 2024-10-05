@@ -46,6 +46,18 @@
          font-size: 0.875em;
          margin-top: 0.5em;
       }
+
+      main button {
+         display: block;
+         margin: 1rem auto;
+         padding: .3rem;
+      }
+
+      main button img{
+         max-width: 32px;
+         margin-right: .3rem;
+
+      }
    </style>
 </head>
 
@@ -104,8 +116,9 @@
                </fieldset>
             </form>
 
-            <button onclick="signInWithGoogle()">Entrar com Google</button>
-            <span id="googleError" class="error">Erro ao logar com Google</span> <!-- Adicionado para erros do Google -->
+            <button onclick="signInWithGoogle()"><img src="src/google.png" alt="">Entrar com Google</button>
+            <span id="googleError" class="error">Erro ao logar com Google</span>
+            <!-- Adicionado para erros do Google -->
          </main>
 
          <!-- Rodapé e outros (não alterado) -->

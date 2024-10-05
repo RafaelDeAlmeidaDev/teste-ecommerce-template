@@ -70,22 +70,48 @@ form button[type="submit"]:hover {
     background-color: #45a049;
 }
 /* Estilo para os botões de paginação */
-.pagination button,
-.edit-button,
-.delete-button {
-    vertical-align: middle;
-    margin-right: 5px;
-    background-color: #45a049;
-    color: #fff;
+.pagination {
+    display: flex;
+    justify-content: center; /* Centraliza os botões */
+    align-items: center;
+    margin-top: 20px;
+    gap: 10px; /* Espaçamento entre os itens */
+}
+
+.pagination button {
+    background-color: #007bff;
+    color: white;
     border: none;
-    border-radius: 3px;
-    padding: 5px 10px;
+    padding: 10px 20px;
+    font-size: 16px;
     cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
 }
 
-.pagination button:hover,
-.edit-button:hover,
-.delete-button:hover {
-    background-color: #45a049;
+.pagination button:hover {
+    background-color: #0056b3; /* Mudança de cor ao passar o mouse */
 }
 
+.pagination button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+.pagination span {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Adicional: ajuste para dispositivos móveis */
+@media (max-width: 600px) {
+    .pagination button {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+
+    .pagination span {
+        font-size: 14px;
+    }
+}
