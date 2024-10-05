@@ -399,13 +399,23 @@
         });
 
         // Função para excluir produtos
+        // Função para excluir produtos com confirmação
         document.getElementById('cafe-list').addEventListener('click', function (event) {
             if (event.target.classList.contains('delete')) {
                 var row = event.target.closest('tr');
-                row.remove();
-                updateProductList();
+                var productName = row.cells[0].textContent;
+
+                // Exibe o pop-up de confirmação
+                var confirmDelete = confirm(`Tem certeza que deseja excluir o produto: "${productName}"?`);
+
+                // Se o usuário confirmar, o produto será removido
+                if (confirmDelete) {
+                    row.remove();
+                    updateProductList();
+                }
             }
         });
+
 
         // Atualiza a exibição dos produtos e a paginação ao carregar a página
         window.addEventListener('DOMContentLoaded', function () {
